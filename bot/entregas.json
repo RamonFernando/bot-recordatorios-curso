@@ -1,0 +1,33 @@
+{
+  "_info": "DATOS DE EJEMPLO (ficticios). Sustituye este fichero por las fechas de tu curso. Lo usan bot/asistente.py y bot/generar_calendario.py.",
+  "hora_limite": "23:59",
+  "modulos": {
+    "CE_5071": {"nombre": "Modelos de IA"},
+    "CE_5072": {"nombre": "Sistemas de Aprendizaje Automático"},
+    "CE_5073": {"nombre": "Programación de IA (Python)"},
+    "CE_5074": {"nombre": "Sistemas de Big Data"},
+    "CE_5075": {"nombre": "Big Data Aplicado"}
+  },
+  "lliuraments": [
+    {"n": 1, "inicio": "2026-11-02", "fin": "2026-11-30", "temas": {"CE_5071": "Tema de ejemplo A", "CE_5072": "Tema de ejemplo B", "CE_5073": "Tema de ejemplo C", "CE_5074": "Tema de ejemplo D", "CE_5075": "Tema de ejemplo E"}},
+    {"n": 2, "inicio": "2026-12-01", "fin": "2026-12-21", "temas": {"CE_5071": "Tema de ejemplo F", "CE_5072": "Tema de ejemplo G", "CE_5073": "Tema de ejemplo H", "CE_5074": "Tema de ejemplo I", "CE_5075": "Tema de ejemplo J"}}
+  ],
+  "entregas": [
+    {"id": "L1-5073-tarea", "lliurament": 1, "modulo": "CE_5073", "tipo": "tarea", "titulo": "Tarea de ejemplo 1.1", "formato": "PDF", "fecha": "2026-11-23", "confirmada": true},
+    {"id": "L1-5073-quiz", "lliurament": 1, "modulo": "CE_5073", "tipo": "cuestionario", "titulo": "Cuestionario de ejemplo 1.1", "formato": "Plataforma", "fecha": "2026-11-23", "confirmada": true},
+    {"id": "L1-5071-tarea", "lliurament": 1, "modulo": "CE_5071", "tipo": "tarea", "titulo": "Tarea de ejemplo 1.1", "formato": "PDF", "fecha": "2026-11-30", "confirmada": true}
+  ],
+  "eventos": [
+    {"id": "video-L1", "fecha": "2026-11-12", "hora": "19:00", "titulo": "Videoconferencia de dudas L1 (ejemplo)", "tipo": "videoconferencia"},
+    {"id": "festivo-20261208", "fecha": "2026-12-08", "titulo": "Festivo (8 de diciembre)", "tipo": "festivo"},
+    {"id": "academico-ejemplo", "fecha": "2026-11-27", "titulo": "Aviso académico de ejemplo", "tipo": "academico"}
+  ],
+  "plan_estudio": [
+    {"fecha": "2026-11-03", "horas": 2, "modulo": "CE_5073", "que": "Sesión de estudio de ejemplo: ejercicios de Python"},
+    {"fecha": "2026-11-04", "horas": 2, "modulo": "CE_5071", "que": "Sesión de estudio de ejemplo: lectura del tema"},
+    {"fecha": "2026-11-05", "horas": 3, "modulo": "CE_5074", "que": "Sesión de estudio de ejemplo: práctica de bases de datos"},
+    {"fecha": "2026-11-09", "horas": 2, "modulo": "CE_5073", "que": "Sesión de estudio de ejemplo: preparar la tarea 1.1"},
+    {"fecha": "2026-11-16", "horas": 2, "modulo": "CE_5075", "que": "Sesión de estudio de ejemplo: repaso"},
+    {"fecha": "2026-11-20", "horas": 3, "modulo": "CE_5073", "que": "Sesión de estudio de ejemplo: entregar tarea y cuestionario"}
+  ]
+}

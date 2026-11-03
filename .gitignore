@@ -1,0 +1,14 @@
+# Entorno y caché de Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secretos: nunca a git (la plantilla .env.example sí)
+.env
+*.env
+!.env.example
+
+# Estado y salidas del bot
+bot/estado.json
+bot/informes/
+calendario/

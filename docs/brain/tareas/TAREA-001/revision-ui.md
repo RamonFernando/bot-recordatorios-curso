@@ -1,0 +1,16 @@
+VEREDICTO: APRUEBA
+
+**Alcance.** El commit 4f309ba solo añade `tests/test_todas_las_entregas.py` y `docs/brain/tareas/TAREA-001/informe-builder.md`. No toca `bot/`, así que no cambia la salida del bot, ni `CALENDARIO.md`, ni el `.ics`. Lo único visible es la salida de `unittest` y el informe. Ejecuté la suite con los datos de prueba del propio test, sin datos reales, y no modifiqué nada.
+
+**Qué vi al ejecutarla**
+- `python -m unittest discover -s tests` termina en `OK`, con `Ran 9 tests`. Cumple N = 3 + 6. La salida es limpia y corta, y no se pierde ningún acento porque los docstrings no se imprimen sin `-v`.
+- Con `-v`, los acentos de los docstrings salen como `m�dulo`, `funci�n`, `patr�n` y `ning�n`. Esto lo vi en mi captura con tubería. El builder dice que también le pasó en la consola de Windows.
+
+**PROBLEMAS**
+- `tests/test_todas_las_entregas.py:34,60,77,92,102,113` · baja · Con `-v` los docstrings en castellano con tilde se ven rotos en la consola de Windows. Los mensajes de fallo con tilde, como el de la línea 34 («ya no está», «función»), pueden salir igual de rotos cuando un test falle. El informe no deja esto resuelto. Solo menciona el problema en «Incidencias» y fuerza `PYTHONIOENCODING=utf-8` para capturar. Se arregla anotando en `convenciones.md` o en el informe que hay que lanzar con `PYTHONIOENCODING=utf-8` o `python -X utf8` para ver los acentos con `-v`. Si se quiere evitar el problema, se pueden quitar las tildes de los textos que se imprimen, pero eso choca con la decisión de Ramón (docstrings y mensajes en castellano). No bloquea.
+- `tests/test_todas_las_entregas.py:85` · baja · Falta un espacio tras la coma en `("L1-5072-quiz","L1-5071-tarea", ...)`. Es un descuido de formato (PEP 8) que el resto del archivo no tiene. Se arregla añadiendo el espacio.
+- `docs/brain/tareas/TAREA-001/informe-builder.md:12,105 y otras` · baja · Hay líneas muy largas: 292 caracteres en la línea 12, 390 en la 105 (volcado de `AssertionError`) y varias entre 140 y 230. Los volcados de tracebacks son aceptables. Las líneas de prosa (4, 12, 24, 27, 64, 68) se leen mal en un editor sin ajuste de línea. Conviene partirlas en frases más cortas.
+- `docs/brain/tareas/TAREA-001/informe-builder.md:215-217` (nota de la tarea 6, en la sección «Rojo demostrado») · baja · La salida del rojo de la tarea 6 está retocada: usa `<función de carga>` y `<open>` y rutas con `...`. Lo avisa en una nota, pero también llama a ese texto «salida literal». Esas dos cosas se contradicen. Además la excusa (no repetir los nombres que vigila el criterio 6b) no se sostiene, porque la línea del `grep` del criterio 6b del mismo informe sí repite esos nombres. Se arregla cambiando «salida literal» por «salida adaptada» o pegando la salida real. En un informe, que no es el archivo de test, repetir esos nombres no rompe nada.
+- `docs/brain/tareas/TAREA-001/informe-builder.md` (rojo de la tarea 1) · baja · El mensaje de fallo dice «Debe haber exactamente 1 entrada» mientras el aserto esperaba 2. Es normal en un rojo deliberado y el informe lo deja claro. No requiere acción.
+
+No hay problemas altos ni medios. Los mensajes de fallo son claros, usan `subTest` y dicen qué par o id falla. La salida en `OK` es corta y legible.

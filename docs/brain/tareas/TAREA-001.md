@@ -54,7 +54,7 @@ Como el código ya existe, los tests pasarán a la primera. Para cumplir «prime
    - Rojo demostrado: esperar el orden inverso de tipos (`tarea` antes que `cuestionario`).
 5. **Criterio 5.**
    - Test primero: `deepcopy` antes y comparación después, más `assertIsNot` entre la lista devuelta y `datos["entregas"]`.
-   - Rojo demostrado: hacer en el test un `datos["entregas"].append({})` tras la copia y ver que la comparación falla. Después se quita.
+   - Rojo demostrado: hacer en el test un `datos["entregas"].append({})` tras la copia **y después de llamar a la función** y ver que la comparación falla. Después se quita. Si el `append({})` va antes de la llamada, el bot falla con `KeyError` y no se llega a ver la comparación.
 6. **Criterio 6a.**
    - Test primero: llamada con `builtins.open` parcheado.
    - Rojo demostrado: dentro del parche, llamar en el test a `asistente.cargar_datos()` y ver que falla. Después se quita. Así se confirma que el parche detecta lecturas. Ojo: si el archivo no existe, el parche salta igualmente porque intercepta `open` antes de leer nada.
@@ -74,6 +74,7 @@ Como el código ya existe, los tests pasarán a la primera. Para cumplir «prime
 - **Dependencia de una constante con deuda.** Los tests dependen de `MODULOS_EVALUABLES` escrita en `asistente.py`, que `arquitectura.md` lista como deuda. Si se mueve a `entregas.json`, estos tests habrá que adaptarlos. Mitigación: usar `asistente.MODULOS_EVALUABLES` para los recuentos y la guarda de la tarea 1.
 - **Fijar un comportamiento dudoso.** Ver la pregunta 1: el criterio 1 deja fijado que una entrega definida de cualquier tipo anula las **dos** previstas del par.
 - **Falso verde.** Al ser código existente, un test mal escrito puede pasar sin comprobar nada. Mitigación: el rojo demostrado de cada tarea y su salida en la PR.
+- **Alcance del rojo de la tarea 5.** Ese rojo demuestra que la comparación funciona, pero no que el test detectaría una mutación hecha por la propia función. Es una limitación asumida de los tests de caracterización.
 - **Importación como paquete de espacio de nombres.** `bot/` no tiene `__init__.py`; `from bot import asistente` funciona porque `python -m` añade la raíz a `sys.path`. Los tests solo funcionan lanzados desde la raíz, igual que `test_fechas.py`. No se cambia, solo se avisa.
 - **Comparación de fechas como texto.** El orden por `fecha` compara cadenas. Es correcto solo con formato ISO `AAAA-MM-DD`. Los datos de prueba usan ese formato y no se prueba otro.
 

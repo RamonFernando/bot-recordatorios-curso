@@ -33,6 +33,15 @@ actual con datos mínimos escritos dentro del test (decisión P2), sin tocar el 
    regla de que una entrega definida anula las dos previstas, o se mueve la lista de módulos a
    `entregas.json`, estos tests avisarán y habrá que actualizarlos.
 
+El borrador anterior es previo a la plantilla de `convenciones.md`. El punto 5 definitivo es éste:
+
+### Punto 5 · Qué tiene que decidir o explicar Ramón
+- **Explicación (de Ramón):** «Se rompió cada test a propósito para comprobar si el test fallaba en
+  caso de que el resultado no fuera el esperado.»
+- **Revisión:** ✅ Correcto. Gracias a eso, un test en verde significa algo y no pasa siempre.
+  (Línea escrita por Claude; la explicación de arriba es de Ramón.)
+- **Decisión pendiente:** fusionar `tarea-001` a `main`. Una sola fusión trae también `fase-0`.
+
 ## Resultado
 9 tests en verde (3 que ya había y 6 nuevos) y los criterios 1 a 8 se cumplen. Las salidas de
 consola completas están al final, en los anexos A y B.

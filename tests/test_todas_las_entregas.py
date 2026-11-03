@@ -9,6 +9,10 @@ from unittest import mock
 
 from bot import asistente
 
+DEFINED_PAIR = (1, "CE_5073")  # único par (lliurament, módulo) con entrega definida en build_data()
+LLIURAMENT_NUMBERS = (1, 2)
+PLANNED_PER_PAIR = 2  # una tarea y un cuestionario
+
 
 def build_data():
     """Devuelve un diccionario de datos nuevo en cada llamada.
@@ -35,34 +39,36 @@ class TestTodasLasEntregas(unittest.TestCase):
     def test_defined_pair_has_no_planned_entries(self):
         """Un par (lliurament, módulo) con entrega definida no recibe previstas."""
         self.assertIn(
-            "CE_5073", asistente.MODULOS_EVALUABLES,
+            DEFINED_PAIR[1], asistente.MODULOS_EVALUABLES,
             "CE_5073 ya no está en MODULOS_EVALUABLES: hay que adaptar los datos de prueba",
         )
         resultado = asistente.todas_las_entregas(build_data())
-        del_par = [e for e in resultado if e["lliurament"] == 1 and e["modulo"] == "CE_5073"]
+        del_par = [e for e in resultado if (e["lliurament"], e["modulo"]) == DEFINED_PAIR]
         self.assertEqual(len(del_par), 1, "Debe haber exactamente 1 entrada para (1, CE_5073)")
         self.assertTrue(del_par[0]["confirmada"], "La entrada de (1, CE_5073) debe ser la definida")
         self.assertEqual(del_par[0]["id"], "L1-5073-tarea")
+        # Redundante con lo anterior por cómo son los datos; se mantiene porque el criterio 1 lo pide literalmente.
         previstas = [e for e in del_par if not e["confirmada"]]
         self.assertEqual(previstas, [], "No debe haber previstas para (1, CE_5073)")
 
     def test_two_planned_entries_per_pair_without_detail(self):
         """Cada par sin entrega definida recibe una tarea y un cuestionario previstos."""
         resultado = asistente.todas_las_entregas(build_data())
-        for n in (1, 2):
+        for n in LLIURAMENT_NUMBERS:
             for modulo in asistente.MODULOS_EVALUABLES:
-                if (n, modulo) == (1, "CE_5073"):
+                if (n, modulo) == DEFINED_PAIR:
                     continue
                 with self.subTest(lliurament=n, modulo=modulo):
                     previstas = [e for e in resultado
                                  if e["lliurament"] == n and e["modulo"] == modulo
                                  and not e["confirmada"]]
-                    self.assertEqual(len(previstas), 2,
+                    self.assertEqual(len(previstas), PLANNED_PER_PAIR,
                                      f"El par ({n}, {modulo}) debe tener 2 previstas")
                     self.assertEqual({e["tipo"] for e in previstas}, {"tarea", "cuestionario"},
                                      f"El par ({n}, {modulo}) debe tener tarea y cuestionario")
-        # 2 lliuraments x módulos x 2 previstas, menos las 2 del par definido, más la definida.
-        total_esperado = 2 * len(asistente.MODULOS_EVALUABLES) * 2 - 2 + 1
+        # El par definido aporta 1 entrega (la definida); cada uno de los demás pares aporta 2 previstas.
+        pares = len(LLIURAMENT_NUMBERS) * len(asistente.MODULOS_EVALUABLES)
+        total_esperado = (pares - 1) * PLANNED_PER_PAIR + 1
         self.assertEqual(len(resultado), total_esperado,
                          "El total de entregas no coincide con el esperado")
 
@@ -78,11 +84,12 @@ class TestTodasLasEntregas(unittest.TestCase):
                                  "Una prevista debe tener formato 'por confirmar'")
                 self.assertEqual(e["fecha"], fin_por_lliurament[e["lliurament"]],
                                  "Una prevista debe vencer el día de fin de su lliurament")
+                # Repite la lógica del bot; la protección real son los tres ids escritos a mano más abajo.
                 sufijo = "tarea" if e["tipo"] == "tarea" else "quiz"
                 self.assertEqual(e["id"], f"L{e['lliurament']}-{e['modulo'][3:]}-{sufijo}",
                                  "El id de la prevista no sigue el patrón esperado")
         ids_previstas = {e["id"] for e in previstas}
-        for id_esperado in ("L1-5072-quiz","L1-5071-tarea", "L2-5073-tarea"):
+        for id_esperado in ("L1-5072-quiz", "L1-5071-tarea", "L2-5073-tarea"):
             with self.subTest(id_esperado=id_esperado):
                 self.assertIn(id_esperado, ids_previstas,
                               f"Falta la prevista {id_esperado}")

@@ -22,6 +22,14 @@
 - Una rama por tarea: `fase-N` para la preparación, `tarea-NNN` para cada tarea.
 - Nada va a `main` sin PR.
 
+## Explicación de 5 puntos
+Cada tarea termina con esta explicación, antes de las salidas de consola y escrita en palabras simples:
+1. **Qué se ha hecho.** Una frase.
+2. **Por qué.** Qué problema o riesgo resuelve y qué issue lo pidió.
+3. **Cómo se comprobó.** Qué tests pasan, la salida final en `OK` y, si se hizo, el rojo demostrado.
+4. **Qué puede salir mal.** Riesgos, deuda que se deja y lo que se decidió no tocar a propósito.
+5. **Qué tiene que decidir o explicar Ramón.** Decisiones pendientes y una pregunta que solo se contesta si se entendió el cambio. Este punto lo escribe Ramón con sus palabras; ninguna IA lo redacta.
+
 ## Seguridad
 - Apikeys y números solo en `.env`, que está en `.gitignore`. La plantilla es `.env.example`.
 - Los mensajes y la consola muestran los números enmascarados.

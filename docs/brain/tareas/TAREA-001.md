@@ -86,7 +86,7 @@ Como el código ya existe, los tests pasarán a la primera. Para cumplir «prime
 - P1 y P2: aprobadas (se registran en `docs/brain/decisiones.md`).
 - Pregunta 1: se mantiene el comportamiento actual y se testea tal cual.
 - Pregunta 2: nombres en inglés, docstrings y mensajes en castellano.
-- Pregunta 3: pendiente. El brain no define los 5 puntos; mientras tanto se usa el contenido del informe de la tarea 7.
+- Pregunta 3: resuelta. La plantilla de 5 puntos está en `convenciones.md` y en `decisiones.md`.
 
 ## Preguntas para Ramón (históricas; ya respondidas arriba)
 1. **¿Es intencionado que una sola entrega definida anule las dos previstas del par?** En los datos de ejemplo, L1 de `CE_5071` solo tiene la `tarea` definida, así que el bot **no** muestra el cuestionario previsto de ese módulo. La issue lo pide así en el criterio 1, y el spec lo respeta (se testea el comportamiento actual). Si no es intencionado, es un fallo que se informará en una issue aparte, sin corregirlo aquí.

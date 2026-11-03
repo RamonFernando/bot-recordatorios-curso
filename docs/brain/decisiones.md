@@ -39,3 +39,6 @@ Cuando se añaden tests a código que ya existe y la tarea prohíbe tocarlo, la 
 
 ## 2026-11-03 · Los tests de funciones de datos usan datos mínimos dentro del test
 Nunca `bot/entregas.json` ni `bot/estado.json`. Si la función no debe tocar disco, se vigila con `mock.patch("builtins.open")`. Motivo: los datos del repo son de ejemplo y cambiarán. Aprobada por Ramón en TAREA-001.
+
+## 2026-11-03 · Plantilla de la explicación de 5 puntos
+Qué se ha hecho, por qué, cómo se comprobó, qué puede salir mal y qué tiene que decidir o explicar Ramón. Los puntos 1 a 4 los redacta el builder; el 5 lo escribe Ramón. Está en `convenciones.md`. Motivo: `CLAUDE.md` exigía la explicación pero el brain no decía cuál era. Aprobada por Ramón en TAREA-001.

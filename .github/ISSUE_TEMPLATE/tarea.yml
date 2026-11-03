@@ -1,0 +1,37 @@
+name: Tarea de la factory
+description: Una tarea pequeña y revisable
+labels: ["spec"]
+body:
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo
+      description: Qué debe conseguirse, en una o dos frases.
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      description: Lista de comprobaciones. Si no sabes cómo revisar algo, no está listo.
+    validations:
+      required: true
+  - type: textarea
+    id: fuera
+    attributes:
+      label: Qué queda fuera
+    validations:
+      required: true
+  - type: dropdown
+    id: sensible
+    attributes:
+      label: ¿Toca algo sensible?
+      options:
+        - No
+        - Base de datos
+        - Pagos
+        - Autenticación
+        - Secretos
+        - Despliegue
+    validations:
+      required: true

@@ -26,5 +26,10 @@ spec-writer, builder y approver usan Opus; los cuatro revisores usan Sonnet, as�
 ## 2026-11-03 · `revisor-ui` revisa la salida de terminal
 Este bot no tiene interfaz desplegada. Su revisor de interfaz comprueba la salida de la terminal y los archivos generados (`.ics` y `CALENDARIO.md`): legibilidad, acentos, longitud de líneas y claridad.
 
-## 2026-11-03 · Ensayo del hook de bloqueo: pendiente en una sesión real
-El script `.claude/hooks/bloquear.py` se probó por separado con 16 casos y pasó todos. Falta comprobar que Claude Code lo aplica de verdad, abriendo una sesión dentro de esta carpeta y pidiéndole que lea `.env` y que ejecute `git push origin main`. Hasta entonces el hook es un aviso, no una barrera. La barrera real será la protección de `main` en GitHub (fase 2).
+## 2026-11-03 · Ensayo del hook de bloqueo en una sesión real
+El script `.claude/hooks/bloquear.py` pasó 16 casos por separado y, después, una sesión de Claude Code abierta en esta carpeta lo ejercitó de verdad.
+- **Bash: probado.** `git push origin main` y `cat .env` se bloquearon con «Bloqueado por la factory»; `git status --short` pasó.
+- **Read: probado.** Leer un archivo de credenciales que no estaba cubierto por la regla de permisos se bloqueó con el mismo mensaje; leer `.env.example` y `README.md` pasó. Leer `.env` lo frena además la regla de permisos `Read(./.env)` de `settings.json`, antes que el hook.
+- **Edit y Write: sin demostrar.** El ensayo con `Edit` sobre un archivo inexistente falló por «File does not exist» antes de que el hook interviniera, así que no concluye nada. Para probarlo haría falta un archivo que exista y que el hook deba bloquear.
+
+El hook funciona como barrera para Bash y Read. Para Edit y Write solo está probada la lógica del script. La barrera que no depende de nada local será la protección de `main` en GitHub (fase 2).

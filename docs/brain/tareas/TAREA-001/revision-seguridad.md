@@ -16,5 +16,5 @@ Resultado por cada punto del alcance:
 - **Datos personales:** aparte del punto 1, no hay números de teléfono, apikeys ni correos en el contenido. El informe cita nombres de variables sensibles (`cargar_datos`, etc.) pero ningún valor.
 
 Archivos revisados:
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\tests\test_todas_las_entregas.py`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001\informe-builder.md`
+- `<raíz>\tests\test_todas_las_entregas.py`
+- `<raíz>\docs\brain\tareas\TAREA-001\informe-builder.md`

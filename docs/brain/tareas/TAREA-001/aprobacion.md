@@ -34,10 +34,10 @@ He juntado los hallazgos repetidos entre informes y los he ordenado por gravedad
 - **Criterio 6b sin repetir.** Ningún revisor pudo repetir la búsqueda porque el hook bloquea cualquier patrón que contenga `.env`. UX y código leyeron el archivo de test entero y confirman que no contiene ninguna de las cadenas vigiladas. Lo doy por suficiente.
 
 ## Archivos
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001\revision-seguridad.md`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001\revision-ux.md`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001\revision-ui.md`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001\revision-codigo.md`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001\informe-builder.md`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001.md`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\tests\test_todas_las_entregas.py`
+- `<raíz>\docs\brain\tareas\TAREA-001\revision-seguridad.md`
+- `<raíz>\docs\brain\tareas\TAREA-001\revision-ux.md`
+- `<raíz>\docs\brain\tareas\TAREA-001\revision-ui.md`
+- `<raíz>\docs\brain\tareas\TAREA-001\revision-codigo.md`
+- `<raíz>\docs\brain\tareas\TAREA-001\informe-builder.md`
+- `<raíz>\docs\brain\tareas\TAREA-001.md`
+- `<raíz>\tests\test_todas_las_entregas.py`

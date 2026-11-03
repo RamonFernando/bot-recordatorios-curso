@@ -27,6 +27,6 @@ No he podido repetir la búsqueda del criterio 6b. El hook de la factory bloque�
 Ningún hallazgo bloquea. El recorrido es corto y el test es comprensible. Lo guardado en el brain se respeta: P1, P2, la pregunta 1 (se mantiene el comportamiento actual) y la pregunta 2 (nombres).
 
 Archivos revisados:
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\tests\test_todas_las_entregas.py`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001\informe-builder.md`
-- `C:\Users\Ramon\Ramon Dropbox\Ramon Perez\PC\Desktop\bot-recordatorios-curso\docs\brain\tareas\TAREA-001.md`
+- `<raíz>\tests\test_todas_las_entregas.py`
+- `<raíz>\docs\brain\tareas\TAREA-001\informe-builder.md`
+- `<raíz>\docs\brain\tareas\TAREA-001.md`

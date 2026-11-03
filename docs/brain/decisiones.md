@@ -33,3 +33,9 @@ El script `.claude/hooks/bloquear.py` pasó 16 casos por separado y, después, u
 - **Edit y Write: sin demostrar.** El ensayo con `Edit` sobre un archivo inexistente falló por «File does not exist» antes de que el hook interviniera, así que no concluye nada. Para probarlo haría falta un archivo que exista y que el hook deba bloquear.
 
 El hook funciona como barrera para Bash y Read. Para Edit y Write solo está probada la lógica del script. La barrera que no depende de nada local será la protección de `main` en GitHub (fase 2).
+
+## 2026-11-03 · Rojo demostrado en tests de caracterización
+Cuando se añaden tests a código que ya existe y la tarea prohíbe tocarlo, la fase roja se cumple ejecutando cada test una vez con un valor esperado erróneo dentro del test y guardando ese fallo en el informe. Motivo: `convenciones.md` exige que el test falle primero, pero aquí no hay código nuevo. Aprobada por Ramón en TAREA-001.
+
+## 2026-11-03 · Los tests de funciones de datos usan datos mínimos dentro del test
+Nunca `bot/entregas.json` ni `bot/estado.json`. Si la función no debe tocar disco, se vigila con `mock.patch("builtins.open")`. Motivo: los datos del repo son de ejemplo y cambiarán. Aprobada por Ramón en TAREA-001.
